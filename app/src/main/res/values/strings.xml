@@ -5,4 +5,14 @@
     <string name="login_page_password_input_hint">Password</string>
     <string name="login_page_sign_up_text">Vous n\'avez pas de comptes ? Connectez-vous</string>
     <string name="login_page_login_button">Log in</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="user_profile_picture_description">User profile picture</string>
+    <string name="sample_text_conversation_cell_last_message">LoremipsuLoremipsuLoremipsuLoremipsuLoremipsuLoremipsuLoremipsuLoremipsu</string>
+    <string name="notification_sample_text_conversation_cell">99</string>
+    <string name="navigation_tab_home">Home</string>
+    <string name="navigation_tab_search">Search</string>
+    <string name="navigation_tab_new">New</string>
+    <string name="navigation_tab_reels">Reels</string>
+    <string name="navigation_tab_profile">profile</string>
 </resources>
