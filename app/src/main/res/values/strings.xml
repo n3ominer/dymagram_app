@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Dymagram</string>
+    <string name="dymagram_app_name">Dymagram</string>
+    <string name="login_page_login_input_hint">Username, mail, phone</string>
+    <string name="login_page_password_input_hint">Password</string>
+    <string name="login_page_sign_up_text">Vous n\'avez pas de comptes ? Connectez-vous</string>
+    <string name="login_page_login_button">Log in</string>
+</resources>
