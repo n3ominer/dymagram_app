@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.dymagram.R
 import com.example.dymagram.data.model.GlobalDataModel
 import com.example.dymagram.data.model.posts.Post
@@ -24,6 +25,8 @@ class UserFeedFragment : Fragment() {
     private lateinit var storiesRv: RecyclerView
     private lateinit var postsRv: RecyclerView
 
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
+
     private val homeFeedViewModel: HomeFeedViewModel by viewModels {
         HomeFeedViewModelFactory(GlobalDataRepository(), this)
     }
@@ -34,13 +37,15 @@ class UserFeedFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_user_feed, container, false)
-
+        this.swipeRefreshLayout = view.findViewById(R.id.home_fragment_swipe_refresh_layout)
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         fetchData(view)
+        setUpSwipeToRefreshListeners()
     }
 
     private fun setUpStoriesRv(stories: List<Story>, fragmentView: View) {
@@ -58,11 +63,10 @@ class UserFeedFragment : Fragment() {
 
     private fun fetchData(fragmentView: View) {
         this.homeFeedViewModel.globalData.observe(viewLifecycleOwner) { data ->
-            Toast.makeText(context, "On a reçu de la donnée", Toast.LENGTH_LONG).show()
-
             // Enlever le loader un loader
             this.setUpStoriesRv(getUserFeedStories(data), fragmentView)
             this.setUpPostsRv(getUserFeedPosts(data), fragmentView)
+            this.swipeRefreshLayout.isRefreshing = false
         }
 
         this.homeFeedViewModel.fetchDataFromFakeServer()
@@ -74,5 +78,11 @@ class UserFeedFragment : Fragment() {
 
     private fun getUserFeedPosts(data: GlobalDataModel): List<Post> {
         return data.posts
+    }
+
+    private fun setUpSwipeToRefreshListeners() {
+        this.swipeRefreshLayout.setOnRefreshListener {
+            this.homeFeedViewModel.fetchDataFromFakeServer()
+        }
     }
 }

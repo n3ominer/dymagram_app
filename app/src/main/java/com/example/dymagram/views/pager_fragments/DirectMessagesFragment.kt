@@ -50,8 +50,6 @@ class DirectMessagesFragment : Fragment() {
 
     private fun fetchData(fragmentView: View) {
         this.directMessagesiewModel.messagesData.observe(viewLifecycleOwner) { messages ->
-            Toast.makeText(context, "On a reçu de la donnée", Toast.LENGTH_LONG).show()
-
             setUpDmRv(messages, fragmentView)
         }
         this.directMessagesiewModel.fetchMessagesFromRepo()

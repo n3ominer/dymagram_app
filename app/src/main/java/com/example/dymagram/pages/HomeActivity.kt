@@ -1,4 +1,4 @@
-package com.example.dymagram
+package com.example.dymagram.pages
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
-import com.example.dymagram.viewmodel.HomeFeedViewModel
+import com.example.dymagram.R
 import com.example.dymagram.views.ViewPagerAdapter
 
 class HomeActivity : AppCompatActivity() {

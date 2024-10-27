@@ -5,13 +5,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:gravity="center"
+    android:layout_marginHorizontal="8dp"
     android:weightSum="1"
     android:layout_marginTop="20dp">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/direct_message_user_profile_picture_card_view"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         app:cardCornerRadius="50dp"
         app:strokeWidth="4dp"
         android:layout_marginHorizontal="4dp"
@@ -36,8 +37,11 @@
         android:id="@+id/conversation_last_message_text_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
         android:maxLines="2"
+        android:fontFamily="sans-serif-condensed-medium"
         android:ellipsize="end"
+        android:textSize="16sp"
         android:layout_weight="1"
         android:text="@string/sample_text_conversation_cell_last_message"/>
 

@@ -60,4 +60,5 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.glide)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.swiperefreshlayout)
 }

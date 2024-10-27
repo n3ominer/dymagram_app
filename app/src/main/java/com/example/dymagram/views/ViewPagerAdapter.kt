@@ -2,7 +2,7 @@ package com.example.dymagram.views
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.dymagram.HomeActivity
+import com.example.dymagram.pages.HomeActivity
 import com.example.dymagram.views.pager_fragments.DirectMessagesFragment
 import com.example.dymagram.views.pager_fragments.MediaFragments
 import com.example.dymagram.views.pager_fragments.UserFeedFragment
