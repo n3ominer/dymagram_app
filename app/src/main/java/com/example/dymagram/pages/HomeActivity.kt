@@ -7,9 +7,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.example.dymagram.R
+import com.example.dymagram.pages.interfaces.PagerHandler
 import com.example.dymagram.views.ViewPagerAdapter
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), PagerHandler {
     private lateinit var dymagramPager: ViewPager2
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,9 +29,21 @@ class HomeActivity : AppCompatActivity() {
     private fun setUpMainPager() {
         this.dymagramPager = findViewById(R.id.main_app_pager)
 
-        val mainPagerAdapter = ViewPagerAdapter(this)
+        val mainPagerAdapter = ViewPagerAdapter(this, this)
         this.dymagramPager.adapter = mainPagerAdapter
+        displayHomePage()
+    }
+
+    override fun displayMediaPage() {
+        this.dymagramPager.currentItem = 0
+    }
+
+    override fun displayHomePage() {
         this.dymagramPager.currentItem = 1
+    }
+
+    override fun displayDirectMessagesPage() {
+        this.dymagramPager.currentItem = 2
     }
 
 }

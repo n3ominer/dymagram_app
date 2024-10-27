@@ -17,9 +17,11 @@ class GlobalDataRepository {
 
     private val globalService = RetrofitClient.instance.create(GlobalDataService::class.java)
 
-    private val _globalData = MutableLiveData<GlobalDataModel>() // itnerne au VM
+    private val _globalData = MutableLiveData<GlobalDataModel>() // itnerne au Repository
+    private val _error = MutableLiveData<String>() // itnerne au Repository
 
     val globalData : LiveData<GlobalDataModel> get() = _globalData
+    val error : LiveData<String> get() = _error
 
     fun getAllData() {
         val call = globalService.getAllData()
@@ -30,9 +32,14 @@ class GlobalDataRepository {
                 response: Response<GlobalModelDto>
             ) {
                 Log.d("Data from fake server", "${response.body()}")
-                val responseBody = response.body()
-                this@GlobalDataRepository._globalData.value = responseBody?.let {
-                    mapGlobalDataDtoToGlobalDataModel(it)
+
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    this@GlobalDataRepository._globalData.value = responseBody?.let {
+                        mapGlobalDataDtoToGlobalDataModel(it)
+                    }
+                } else {
+                    this@GlobalDataRepository._error.value = response.errorBody().toString()
                 }
             }
 

@@ -15,4 +15,13 @@
     <string name="navigation_tab_new">New</string>
     <string name="navigation_tab_reels">Reels</string>
     <string name="navigation_tab_profile">profile</string>
+    <string name="story_image_view_description">story_image_content</string>
+    <string name="story_detail_user_profile_pic_image_view">TODO</string>
+    <string name="user_story_detail_comment_text_hint">Commenter la story</string>
+    <string name="reload_data_text">Recharger les données</string>
+    <string name="load_data_when_error_image_view">Load data when error image view</string>
+    <string name="hint_story_user_name">username</string>
+    <string name="hint_story_user_name_text">Toto Dyma</string>
+    <string name="hint_sample_user_pseudo_text">\@tot0_dyma</string>
+    <string name="add_story_button">TODO</string>
 </resources>
