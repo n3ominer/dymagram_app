@@ -91,8 +91,33 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/story_navigation_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/story_comment_card_view"
+                android:layout_below="@id/story_user_info_layout"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <View
+                    android:id="@+id/previous_story_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="0.5"/>
+
+                <View
+                    android:id="@+id/next_story_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="0.5"/>
+
+            </LinearLayout>
+
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/user_info_card_view"
+                android:id="@+id/story_comment_card_view"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_alignParentBottom="true"
