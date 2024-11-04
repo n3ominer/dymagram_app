@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.dymagram.R
 import com.example.dymagram.data.model.story.Story
+import com.example.dymagram.data.model.story.StoryContent
 import com.example.dymagram.pages.interfaces.StoryClickHandler
 import com.example.dymagram.views.viewholders.home_vh.StoryViewHolder
 
@@ -44,6 +45,7 @@ class StoryRvAdapter(private val stories: List<Story>,
             holder.storyCellLayout.setOnClickListener {
                 this.storyClickHandler.displayStoryContent(
                     storyData.story_content.map { it.url },
+                    storyData.story_content.map { it.duration },
                     storyData.username,
                     storyData.user_id,
                     storyData.profile_picture

@@ -20,7 +20,6 @@ import com.example.dymagram.R
 import com.example.dymagram.data.model.GlobalDataModel
 import com.example.dymagram.data.model.posts.Post
 import com.example.dymagram.data.model.story.Story
-import com.example.dymagram.pages.HomeActivity
 import com.example.dymagram.pages.UserStoryDetailActivity
 import com.example.dymagram.pages.interfaces.PagerHandler
 import com.example.dymagram.pages.interfaces.StoryClickHandler
@@ -132,10 +131,11 @@ class UserFeedFragment : Fragment(), StoryClickHandler {
         return data.posts
     }
 
-    override fun displayStoryContent(storiesUrls: List<String>, username: String, pseudo: String, userProfilePicUrl: String) {
+    override fun displayStoryContent(storiesUrls: List<String>, storiesDuration: List<Int>, username: String, pseudo: String, userProfilePicUrl: String) {
         Intent(this.context, UserStoryDetailActivity::class.java).also {
             val options = ActivityOptions.makeCustomAnimation(requireContext(), R.anim.slide_up_animation, R.anim.slide_down_animation)
             it.putStringArrayListExtra(UserStoryDetailActivity.STORIES_CONTENT_URL, ArrayList(storiesUrls))
+            it.putIntegerArrayListExtra(UserStoryDetailActivity.STORIES_DURATION, ArrayList(storiesDuration))
             it.putExtra(UserStoryDetailActivity.USER_NAME, username)
             it.putExtra(UserStoryDetailActivity.USER_PSEUDO, pseudo)
             it.putExtra(UserStoryDetailActivity.USER_PROFILE_PIC_URL, userProfilePicUrl)

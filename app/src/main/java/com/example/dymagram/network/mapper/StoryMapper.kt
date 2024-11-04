@@ -13,6 +13,7 @@ fun mapStoryDtoToStoryModel(dto: StoryDto): Story {
             StoryContent(
                 timestamp = it.timestamp,
                 type = it.type,
+                duration = it.duration,
                 url = it.url
             )
         }
