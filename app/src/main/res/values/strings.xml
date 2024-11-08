@@ -24,4 +24,7 @@
     <string name="hint_story_user_name_text">Toto Dyma</string>
     <string name="hint_sample_user_pseudo_text">\@tot0_dyma</string>
     <string name="add_story_button">TODO</string>
+    <string name="camera_switch_btn_description">Changer de camera</string>
+    <string name="flash">Flash</string>
+    <string name="capture">Capture</string>
 </resources>
