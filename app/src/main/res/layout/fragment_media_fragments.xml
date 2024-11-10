@@ -1,18 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.pager_fragments.MediaFragments">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="MEDIA FRAGMENT"
-        android:textStyle="bold"
-        android:textSize="50dp"
-        android:textColor="@color/orange"/>
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <androidx.camera.view.PreviewView
+            android:id="@+id/previewView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center">
+            <ImageButton
+                android:id="@+id/picture_capture_imageButton"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="bottom|center"
+                android:contentDescription="@string/capture"
+                android:src="@drawable/baseline_capture_24"
+                android:background="?attr/selectableItemBackgroundBorderless"/>
+
+            <ImageButton
+                android:id="@+id/video_capture_imageButton"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="bottom|center"
+                android:contentDescription="@string/capture"
+                android:src="@drawable/baseline_videocam_24"
+                android:background="?attr/selectableItemBackgroundBorderless"/>
+        </LinearLayout>
+
+        <!-- Switch Camera Button -->
+        <ImageButton
+            android:id="@+id/btnSwitchCamera"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="top|end"
+            android:contentDescription="@string/camera_switch_btn_description"
+            android:src="@drawable/baseline_cameraswitch_24"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+
+        <!-- Flash Button -->
+        <ImageButton
+            android:id="@+id/btnFlash"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:contentDescription="@string/flash"
+            android:src="@drawable/baseline_flash_on_24"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+
+    </FrameLayout>
+
+</RelativeLayout>
