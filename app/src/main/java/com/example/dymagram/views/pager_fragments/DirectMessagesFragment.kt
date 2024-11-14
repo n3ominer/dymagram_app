@@ -5,27 +5,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dymagram.R
 import com.example.dymagram.data.model.messages.Message
-import com.example.dymagram.repositories.DirectMessagesRepository
-import com.example.dymagram.repositories.GlobalDataRepository
 import com.example.dymagram.viewmodel.DirectMessagesViewModel
-import com.example.dymagram.viewmodel.HomeFeedViewModel
-import com.example.dymagram.viewmodel.factories.DirectMessagesViewModelFactory
-import com.example.dymagram.viewmodel.factories.HomeFeedViewModelFactory
 import com.example.dymagram.views.recycler_view_adapters.dm_adapters.DirectMessagesRvAdapter
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DirectMessagesFragment : Fragment() {
 
     lateinit var messagesRv: RecyclerView
 
-    private val directMessagesiewModel: DirectMessagesViewModel by viewModels {
-        DirectMessagesViewModelFactory( DirectMessagesRepository(), this)
-    }
+    private val directMessagesiewModel: DirectMessagesViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

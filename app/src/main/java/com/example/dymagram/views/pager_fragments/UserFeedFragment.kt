@@ -23,11 +23,10 @@ import com.example.dymagram.data.model.story.Story
 import com.example.dymagram.pages.UserStoryDetailActivity
 import com.example.dymagram.pages.interfaces.PagerHandler
 import com.example.dymagram.pages.interfaces.StoryClickHandler
-import com.example.dymagram.repositories.GlobalDataRepository
 import com.example.dymagram.viewmodel.HomeFeedViewModel
-import com.example.dymagram.viewmodel.factories.HomeFeedViewModelFactory
 import com.example.dymagram.views.recycler_view_adapters.home_adapters.PostsRvAdapter
 import com.example.dymagram.views.recycler_view_adapters.home_adapters.StoryRvAdapter
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.ArrayList
 
 class UserFeedFragment : Fragment(), StoryClickHandler {
@@ -40,9 +39,7 @@ class UserFeedFragment : Fragment(), StoryClickHandler {
 
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
-    private val homeFeedViewModel: HomeFeedViewModel by viewModels {
-        HomeFeedViewModelFactory(GlobalDataRepository(), this)
-    }
+    private val homeFeedViewModel: HomeFeedViewModel by viewModel()
 
     private lateinit var _pagerHandler: PagerHandler
 

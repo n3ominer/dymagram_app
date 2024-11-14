@@ -7,6 +7,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.example.dymagram.R
+import com.example.dymagram.di.injectAppConfiguration
+import com.example.dymagram.di.injectModuleDependencies
 import com.example.dymagram.pages.interfaces.PagerHandler
 import com.example.dymagram.views.ViewPagerAdapter
 
@@ -22,6 +24,10 @@ class HomeActivity : AppCompatActivity(), PagerHandler {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // Injection des dépendances
+        injectAppConfiguration()
+        injectModuleDependencies(this@HomeActivity)
 
         setUpMainPager()
     }

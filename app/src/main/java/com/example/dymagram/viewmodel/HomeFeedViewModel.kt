@@ -1,6 +1,6 @@
 package com.example.dymagram.viewmodel
 
-import androidx.lifecycle.LifecycleOwner
+import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +8,7 @@ import com.example.dymagram.data.model.GlobalDataModel
 import com.example.dymagram.repositories.GlobalDataRepository
 
 
-class HomeFeedViewModel(private val globalDataRepository: GlobalDataRepository, private val context: LifecycleOwner): ViewModel() {
+class HomeFeedViewModel(private val globalDataRepository: GlobalDataRepository): ViewModel() {
     private val _globalData = MutableLiveData<GlobalDataModel>() // itnerne au VM
     private val _error = MutableLiveData<String>()
 
@@ -16,14 +16,13 @@ class HomeFeedViewModel(private val globalDataRepository: GlobalDataRepository, 
     val error : LiveData<String> get() = _error
 
 
+    @SuppressLint("CheckResult")
     fun fetchDataFromFakeServer() {
-        this.globalDataRepository.globalData.observe(this.context) { data ->
+        this.globalDataRepository.globalData.subscribe({ data ->
             this@HomeFeedViewModel._globalData.value = data
-        }
-        this.globalDataRepository.error.observe(this.context) { data ->
-            this._error.value = null
-            this@HomeFeedViewModel._error.value = data
-        }
+        }, { error ->
+            this@HomeFeedViewModel._error.value = error.message
+        })
         if (this._globalData.value == null) {
             this.globalDataRepository.getAllData()
         }
