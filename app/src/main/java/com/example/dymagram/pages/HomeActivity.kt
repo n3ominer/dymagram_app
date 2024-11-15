@@ -16,7 +16,6 @@ import com.example.dymagram.di.injectAppConfiguration
 import com.example.dymagram.di.injectModuleDependencies
 import com.example.dymagram.pages.interfaces.PagerHandler
 import com.example.dymagram.views.ViewPagerAdapter
-import java.security.Permission
 
 class HomeActivity : AppCompatActivity(), PagerHandler {
     private lateinit var dymagramPager: ViewPager2
