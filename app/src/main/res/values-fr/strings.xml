@@ -34,4 +34,5 @@
     <string name="capture">Capture</string>
     <string name="dymagram_app_logo">Dymagram app logo</string>
     <string name="boutton_pour_se_connecter">Boutton pour se connecter</string>
+    <string name="dyma_new_stories_to_watch">Vous avez %1$d que vous n\'avez pas encore visionné</string>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+    <string name="app_name">Dymagram</string>
     <string name="dymagram_app_name">Dymagram</string>
 
 
@@ -34,4 +34,5 @@
     <string name="capture">Capture</string>
     <string name="dymagram_app_logo">Dymagram app logo</string>
     <string name="boutton_pour_se_connecter">Boutton pour se connecter</string>
+    <string name="dyma_new_stories_to_watch">Tiene %1$d stories que no ha visto</string>
 </resources>
