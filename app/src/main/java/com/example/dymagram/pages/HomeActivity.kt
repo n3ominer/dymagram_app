@@ -1,22 +1,37 @@
 package com.example.dymagram.pages
 
+import android.Manifest
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.example.dymagram.R
+import com.example.dymagram.app_services.DymaSyncService
 import com.example.dymagram.di.injectAppConfiguration
 import com.example.dymagram.di.injectModuleDependencies
 import com.example.dymagram.pages.interfaces.PagerHandler
 import com.example.dymagram.views.ViewPagerAdapter
+import java.security.Permission
 
 class HomeActivity : AppCompatActivity(), PagerHandler {
     private lateinit var dymagramPager: ViewPager2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ActivityCompat
+                .requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                    0)
+        }
+
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -30,6 +45,11 @@ class HomeActivity : AppCompatActivity(), PagerHandler {
         injectModuleDependencies(this@HomeActivity)
 
         setUpMainPager()
+
+        Intent(this, DymaSyncService::class.java).also {
+            it.action = DymaSyncService.Actions.START.toString()
+            startService(it)
+        }
     }
 
     private fun setUpMainPager() {

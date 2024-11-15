@@ -1,5 +1,6 @@
 package com.example.dymagram.pages
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -14,6 +15,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.example.dymagram.R
+import com.example.dymagram.app_services.DymaSyncService
 
 class UserStoryDetailActivity : AppCompatActivity() {
 
@@ -62,6 +64,11 @@ class UserStoryDetailActivity : AppCompatActivity() {
         setUpViews()
         fillViews()
         setUpStoryNavigationViews()
+
+        Intent(this, DymaSyncService::class.java).also {
+            it.action = DymaSyncService.Actions.STOP.toString()
+            startService(it)
+        }
     }
 
     private fun getIntentData() {
