@@ -33,4 +33,5 @@
     <string name="flash">Flash</string>
     <string name="capture">Capture</string>
     <string name="dymagram_app_logo">Dymagram app logo</string>
+    <string name="boutton_pour_se_connecter">Boutton pour se connecter</string>
 </resources>
