@@ -14,7 +14,8 @@
         android:src="@drawable/dymagram_logo"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        android:contentDescription="@string/dymagram_app_logo"/>
 
     <TextView
         android:id="@+id/login_app_name_text_view"
@@ -24,7 +25,7 @@
         android:layout_below="@+id/login_icon_image_view"
         android:layout_centerInParent="true"
         android:textStyle="bold"
-        android:textSize="40dp"
+        android:textSize="40sp"
         android:fontFamily="cursive"/>
 
     <com.google.android.material.textfield.TextInputLayout
