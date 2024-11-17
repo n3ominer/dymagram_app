@@ -1,7 +1,9 @@
 package com.example.dymagram.pages
 
 import android.Manifest
+import android.content.BroadcastReceiver
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -11,6 +13,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.example.dymagram.R
+import com.example.dymagram.app_services.AirplaneBroadcastReceiver
 import com.example.dymagram.app_services.DymaSyncService
 import com.example.dymagram.di.injectAppConfiguration
 import com.example.dymagram.di.injectModuleDependencies
@@ -20,9 +23,17 @@ import com.example.dymagram.views.ViewPagerAdapter
 class HomeActivity : AppCompatActivity(), PagerHandler {
     private lateinit var dymagramPager: ViewPager2
 
+    private val airplaneBroadcastReceiver = AirplaneBroadcastReceiver()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        registerReceiver(
+            airplaneBroadcastReceiver,
+            IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED)
+        )
+
+        sendBroadcast(Intent("ACTION_TEST_INTENT"))
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             ActivityCompat
                 .requestPermissions(
@@ -71,5 +82,9 @@ class HomeActivity : AppCompatActivity(), PagerHandler {
         this.dymagramPager.currentItem = 2
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(airplaneBroadcastReceiver)
+    }
 }
 
