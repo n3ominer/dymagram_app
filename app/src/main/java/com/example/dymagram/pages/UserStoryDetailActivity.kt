@@ -1,6 +1,12 @@
 package com.example.dymagram.pages
 
+import android.Manifest
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,6 +17,9 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
@@ -25,6 +34,7 @@ class UserStoryDetailActivity : AppCompatActivity() {
         const val USER_NAME = "USER_NAME"
         const val USER_PSEUDO = "USER_PSEUDO"
         const val USER_PROFILE_PIC_URL = "USER_PROFILE_PIC_URL"
+        const val NOTIFICATION_CHANNEL_ID = "dymagram_notification_channel"
     }
 
     private lateinit var storiesContentUrl: List<String>
@@ -48,6 +58,8 @@ class UserStoryDetailActivity : AppCompatActivity() {
 
     val handler = Handler(Looper.getMainLooper())
 
+    private lateinit var notificationChannel: NotificationChannel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +69,18 @@ class UserStoryDetailActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 0)
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            this.notificationChannel = NotificationChannel(
+                NOTIFICATION_CHANNEL_ID,
+                "Lecture de stories complété",
+                NotificationManager.IMPORTANCE_HIGH
+            )
         }
 
         getIntentData()
@@ -183,6 +207,39 @@ class UserStoryDetailActivity : AppCompatActivity() {
         if (this.storyPosition  < this.storiesContentUrl.size) {
             this.displaySotryContent()
         } else {
+            val actionIntent = Intent(this, HomeActivity::class.java).apply {
+
+            }
+
+            val actionPendingIntent = PendingIntent.getActivity(
+                this,
+                0,
+                actionIntent,
+                PendingIntent.FLAG_IMMUTABLE
+            )
+
+            // Créer la notification
+            val notification = NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
+                .setSmallIcon(R.drawable.dymagram_logo)
+                .setContentTitle("Vous avez fini la story de ${this.userName}")
+                .setContentText("Vous avez vu toutes les stories du jour de ${this.userName}")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .addAction(R.drawable.baseline_like_24, "J'aime", actionPendingIntent)
+                .build()
+
+            // Publier
+
+            val notificationManager = NotificationManagerCompat.from(this)
+            if (ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+             return
+            }
+            notificationManager.createNotificationChannel(notificationChannel)
+            notificationManager.notify(1, notification)
+
             finish()
         }
     }
@@ -200,5 +257,11 @@ class UserStoryDetailActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         handler.removeCallbacksAndMessages(null)
+    }
+
+    private fun sendFinishedWatchingUserStory() {
+        //this.userName
+
+
     }
 }
