@@ -70,4 +70,5 @@ dependencies {
     implementation(libs.koin.android)
 
     implementation(libs.rxkotlin)
+    implementation(libs.play.services.location)
 }
