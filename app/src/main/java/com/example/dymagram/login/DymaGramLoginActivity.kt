@@ -12,7 +12,7 @@ import com.example.dymagram.R
 
 class DymaGramLoginActivity : AppCompatActivity() {
 
-    lateinit var loginButton: Button
+    private lateinit var loginButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
