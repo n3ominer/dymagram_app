@@ -57,6 +57,9 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.espresso.intents)
 
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.okhttp)
