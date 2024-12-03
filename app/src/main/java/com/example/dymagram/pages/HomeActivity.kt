@@ -2,7 +2,6 @@ package com.example.dymagram.pages
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.BroadcastReceiver
 import android.content.Intent
 import android.content.IntentFilter
 import android.location.Location
@@ -132,7 +131,6 @@ class HomeActivity : AppCompatActivity(), PagerHandler {
     private fun stopLocationUpdates() {
         if(!locationIsObserved) {
             fusedLocationClient.removeLocationUpdates(locationCallback)
-            Toast.makeText(this, "Suivi de votre localisation terminé", Toast.LENGTH_SHORT).show()
         }
     }
 
