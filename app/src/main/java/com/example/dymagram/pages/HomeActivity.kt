@@ -40,8 +40,7 @@ class HomeActivity : AppCompatActivity(), PagerHandler {
         fastestInterval = 5000 // 5 sec
         priority = LocationRequest.PRIORITY_HIGH_ACCURACY
     }
-
-    private var locationIsObserved: Boolean = false
+    
 
     private val locationCallback = object : LocationCallback() {
         override fun onLocationResult(locatoinResult: LocationResult) {
@@ -129,9 +128,7 @@ class HomeActivity : AppCompatActivity(), PagerHandler {
 
 
     private fun stopLocationUpdates() {
-        if(!locationIsObserved) {
-            fusedLocationClient.removeLocationUpdates(locationCallback)
-        }
+        fusedLocationClient.removeLocationUpdates(locationCallback)
     }
 
     @SuppressLint("MissingPermission")
