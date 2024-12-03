@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.constraintlayout)
+
     testImplementation(libs.junit)
 
     androidTestImplementation(libs.androidx.junit)
@@ -85,4 +86,6 @@ dependencies {
 
     implementation(libs.firebase.auth)
     implementation(libs.firebase.firestore)
+
+    implementation(libs.firebase.messaging.ktx)
 }
