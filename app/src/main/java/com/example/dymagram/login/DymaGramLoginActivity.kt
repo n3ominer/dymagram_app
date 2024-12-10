@@ -60,14 +60,14 @@ class DymaGramLoginActivity : AppCompatActivity() {
             ).addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
-                        Log.d("Firebase Auth", "signInWithEmail:success")
+                        //Log.d("Firebase Auth", "signInWithEmail:success")
                         val user = auth.currentUser
                         Intent(this, HomeActivity::class.java).also {
                             startActivity(it)
                         }
                     } else {
                         // If sign in fails, display a message to the user.
-                        Log.w("Firebase Auth", "signInWithEmail:failure", task.exception)
+                        //Log.w("Firebase Auth", "signInWithEmail:failure", task.exception)
                         Toast.makeText(
                             baseContext,
                             "Authentication failed.",

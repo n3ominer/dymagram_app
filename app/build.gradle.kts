@@ -26,13 +26,16 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+            isDebuggable = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "FAKE_SERVER_BASE_URL", "\"https://my-json-server.typicode.com/\"")
         }
 
         debug {
+            isDebuggable = true
             buildConfigField("String", "FAKE_SERVER_BASE_URL", "\"https://my-json-server.typicode.com/\"")
         }
     }

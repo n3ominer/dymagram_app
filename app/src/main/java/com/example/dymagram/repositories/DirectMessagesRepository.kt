@@ -28,7 +28,7 @@ class DirectMessagesRepository(private val messageService: MessagesService) {
                 call: Call<List<MessageDto>>,
                 response: Response<List<MessageDto>>
             ) {
-                Log.d("Data from fake server", "${response.body()}")
+                //Log.d("Data from fake server", "${response.body()}")
                 val responseBody = response.body()
                 this@DirectMessagesRepository.messagesData.onNext(
                     responseBody?.map {
@@ -39,7 +39,7 @@ class DirectMessagesRepository(private val messageService: MessagesService) {
 
             override fun onFailure(call: Call<List<MessageDto>>, t: Throwable) {
                 // Gestiond e l'erreur
-                Log.d("Error from fake server", "Error: ${t.message}")
+                //Log.d("Error from fake server", "Error: ${t.message}")
                 this@DirectMessagesRepository.messagesData.onError(t)
             }
 

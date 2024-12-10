@@ -21,7 +21,7 @@ class FirebaseNotificationMessageService: FirebaseMessagingService() {
         remoteMessage.notification?.let {
             val title = it.title
             val body = it.body
-            Log.d("FCM", "Notification reçue : $title - $body")
+            //Log.d("FCM", "Notification reçue : $title - $body")
             showNotification(title, body)
         }
     }

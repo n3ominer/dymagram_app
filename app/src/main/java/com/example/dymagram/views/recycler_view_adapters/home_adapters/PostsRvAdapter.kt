@@ -46,13 +46,13 @@ class PostsRvAdapter(val posts: List<Post>): RecyclerView.Adapter<PostsRvViewHol
         holder.postCommentTextView.text = postData.caption
 
         holder.postLikesImageView.setOnClickListener {
-            Log.d("Post like button", "Post liked")
+            //Log.d("Post like button", "Post liked")
         }
         holder.postCommentsImageView.setOnClickListener {
-            Log.d("Post like button", "Post commented")
+            //Log.d("Post like button", "Post commented")
         }
         holder.postSharesImageView.setOnClickListener {
-            Log.d("Post like button", "Post shared")
+            //Log.d("Post like button", "Post shared")
         }
     }
 }

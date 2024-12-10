@@ -280,7 +280,7 @@ class MediaFragments : Fragment() {
                             arrayOf(savedUri.path),
                             null
                         ) { _, uri ->
-                            Log.d("VideoCapture", "Video scanned: $uri")
+                            //Log.d("VideoCapture", "Video scanned: $uri")
                         }
                     }
                     else -> {

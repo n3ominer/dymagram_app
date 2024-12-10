@@ -28,7 +28,7 @@ class GlobalDataRepository(private val globalService: GlobalDataService) {
                 call: Call<GlobalModelDto>,
                 response: Response<GlobalModelDto>
             ) {
-                Log.d("Data from fake server", "${response.body()}")
+                //Log.d("Data from fake server", "${response.body()}")
 
                 if (response.isSuccessful) {
                     val responseBody = response.body()
@@ -48,7 +48,7 @@ class GlobalDataRepository(private val globalService: GlobalDataService) {
 
             override fun onFailure(call: Call<GlobalModelDto>, t: Throwable) {
                 // Gestiond e l'erreur
-                Log.d("Error from fake server", "Error: ${t.message}")
+                //Log.d("Error from fake server", "Error: ${t.message}")
                 this@GlobalDataRepository.globalData.onError(t)
             }
 
@@ -66,10 +66,10 @@ class GlobalDataRepository(private val globalService: GlobalDataService) {
             remoteDataBase.collection("user_feed_posts")
                 .add(postsData)
                 .addOnSuccessListener { documentReference ->
-                    Log.d("Firebase Firestore", "DocumentSnapshot added with ID: ${documentReference.id}")
+                    //Log.d("Firebase Firestore", "DocumentSnapshot added with ID: ${documentReference.id}")
                 }
                 .addOnFailureListener { e ->
-                    Log.w("Firebase Firestore", "Error adding document", e)
+                    //Log.w("Firebase Firestore", "Error adding document", e)
                 }
         }
     }

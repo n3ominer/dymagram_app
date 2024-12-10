@@ -112,7 +112,7 @@ class UserFeedFragment : Fragment(), StoryClickHandler {
         this.homeFeedViewModel.error.observe(viewLifecycleOwner) { error ->
             this.mainFragmentLayout.visibility = View.GONE
             this.retryLoadingLinearLayout.visibility = View.VISIBLE
-            Log.d("Error Dymagram", error)
+            //Log.d("Error Dymagram", error)
             Toast.makeText(context, "Error while trying de fetch data, try again", Toast.LENGTH_LONG).show()
         }
 
